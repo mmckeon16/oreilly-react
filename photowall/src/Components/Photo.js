@@ -3,7 +3,7 @@ import React from 'react';
 const Photo = (props) => (
     //const post = this.props.post
     <figure className="figure"> 
-        <img src={props.post.imageLink} alt={props.post.description}/>
+        <img className="photo" src={props.post.imageLink} alt={props.post.description}/>
         <figcaption> <p> {props.post.description} </p></figcaption>
         <div className="button-container">
             <button className="remove-button" onClick={() => {

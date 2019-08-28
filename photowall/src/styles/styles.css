@@ -152,7 +152,7 @@ button, .button {
 }
  
 button:hover,.button:hover, button:focus, .button:focus {
-    border-color: #00f;
+    border-color: red;
     outline: 0;
 }
  
