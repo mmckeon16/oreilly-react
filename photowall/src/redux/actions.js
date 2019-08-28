@@ -1,3 +1,13 @@
+import {database} from '../database/config';
+
+export function startAddingPost(post) {
+    return (dispatch) => {
+        return database.ref('posts').update({[post.id]:post}).then(()=> {
+            dispatch(addPost(post))
+        });
+    } 
+}
+
 
 //remove post
 export function removePost(index) {

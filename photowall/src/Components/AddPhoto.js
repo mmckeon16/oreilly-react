@@ -11,7 +11,7 @@ const AddPhoto = (props) => {
             imageLink:imageLink,
         }
         if(description && imageLink) {
-            props.addPost(post);
+            props.startAddingPost(post);
             props.onHistory.push('/');
         }
     }
