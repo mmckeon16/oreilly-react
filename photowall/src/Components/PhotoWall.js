@@ -1,10 +1,10 @@
 import React from 'react';
 import Photo from './Photo';
+import {Link} from 'react-router-dom';
 
 const PhotoWall =(props) => (
-    <>
-        <a className ="addIcon" onClick = {props.onNavigate} href = "#AddPhoto"></a>
-        {/*<button className="addIcon" onClick = {props.onNavigate}>  </button>*/}
+    <div>
+        <Link className ="addIcon" to = "/add-photo"></Link>
         <div>
             {props.posts.map(
                 (post,index) => <Photo 
@@ -14,7 +14,7 @@ const PhotoWall =(props) => (
                 />
             )}
         </div>
-    </>
+    </div>
 );
 
 export default PhotoWall;

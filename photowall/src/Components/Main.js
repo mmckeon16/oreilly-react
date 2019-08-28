@@ -2,10 +2,10 @@ import React, { useState, useEffect } from 'react';
 import Title from './Title';
 import PhotoWall from "./PhotoWall";
 import AddPhoto from "./AddPhoto";
+import {Route} from "react-router-dom";
 
 const Main = (props) => {
     const [postList, setPostList] = useState([]);
-    const [screen, setScreen] = useState('photos');
 
     useEffect(() => {
         const data = simDBRequest();
@@ -16,28 +16,21 @@ const Main = (props) => {
     const removePhoto = (postRemoved) => {
         setPostList(postList.filter(postList => postList !== postRemoved));
     }
-    const navigate = () => {
-        setScreen('addPhoto');
-    }
 
     return (
         <>
-            {screen === 'photos' && (   
+            <Route exact path = "/" render ={() => (
                 <div>
                     
-                    <Title title={'Photowall'}/>
-                    <PhotoWall 
-                        posts={postList} 
-                        onRemovePhoto = {removePhoto}
-                        onNavigate = {navigate}
-                    />
-                </div>
-            )}
-            {screen === 'addPhoto' && (
-                <div>
-                    <AddPhoto />
-                </div>
-            )}
+                <Title title={'Photowall'}/>
+                <PhotoWall 
+                    posts={postList} 
+                    onRemovePhoto = {removePhoto}
+                />
+            </div>
+            )} /> 
+
+            <Route path = "/add-photo" component = {AddPhoto}/>
         </>
     )
 };
