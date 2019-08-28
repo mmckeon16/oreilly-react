@@ -1,5 +1,5 @@
 
-//remove
+//remove post
 export function removePost(index) {
     return {
         type: 'REMOVE_POST',
@@ -12,5 +12,14 @@ export function addPost(post) {
     return {
         type: 'ADD_NEW_POST',
         post
+    }
+}
+
+//add comment
+export function addComment(comment, postId) {
+    return {
+        type: "ADD_COMMENT",
+        comment,
+        postId
     }
 }
