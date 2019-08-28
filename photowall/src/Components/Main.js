@@ -18,12 +18,9 @@ const Main = (props) => {
                 </div>
             )} /> 
 
-            {/* <Route path = "/add-photo" render = {({history}) => (
-                <AddPhoto onAddPhoto={(addedPost) => {
-                    addPhoto(addedPost);
-                    history.push("/");
-                }} />
-            )}/> */}
+            <Route path = "/add-photo" render = {({history}) => (
+                <AddPhoto {...props} onHistory={history}/>
+            )}/>
         </>
     )
 };
