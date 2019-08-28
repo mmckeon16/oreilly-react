@@ -18,7 +18,6 @@ const AddPhoto = (props) => {
 
     return (
         <>
-            <h1> Add Photos here</h1>
             <form className ="form" onSubmit = {handleSubmit}>
                 <input type="text" placeholder="link" name="link"/>
                 <input type = "text" placeholder="description" name="description"/>

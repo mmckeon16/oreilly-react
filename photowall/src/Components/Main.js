@@ -2,16 +2,17 @@ import React, {useEffect} from 'react';
 import Title from './Title';
 import PhotoWall from "./PhotoWall";
 import AddPhoto from "./AddPhoto";
-import {Route} from "react-router-dom";
+import {Route, Link} from "react-router-dom";
 
 const Main = (props) => {
 
     return (
         <>
-            {console.log(props)}
+            <h1>
+                <Link to="/"> PhotoWall</Link>
+            </h1>
             <Route exact path = "/" render ={() => (
                 <div>
-                    <Title title={'Photowall'}/>
                     <PhotoWall 
                         {...props} 
                     />
