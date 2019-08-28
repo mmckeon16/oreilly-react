@@ -1,22 +1,43 @@
 import React, { useState, useEffect } from 'react';
 import Title from './Title';
 import PhotoWall from "./PhotoWall";
+import AddPhoto from "./AddPhoto";
 
 const Main = (props) => {
     const [postList, setPostList] = useState([]);
+    const [screen, setScreen] = useState('photos');
 
     useEffect(() => {
         const data = simDBRequest();
         setPostList(data);
     }, []);
 
+    //functions
     const removePhoto = (postRemoved) => {
         setPostList(postList.filter(postList => postList !== postRemoved));
     }
+    const navigate = () => {
+        setScreen('addPhoto');
+    }
+
     return (
         <>
-            <Title title={'Photowall'}/>
-            <PhotoWall posts={postList} onRemovePhoto = {removePhoto}/>
+            {screen === 'photos' && (   
+                <div>
+                    
+                    <Title title={'Photowall'}/>
+                    <PhotoWall 
+                        posts={postList} 
+                        onRemovePhoto = {removePhoto}
+                        onNavigate = {navigate}
+                    />
+                </div>
+            )}
+            {screen === 'addPhoto' && (
+                <div>
+                    <AddPhoto />
+                </div>
+            )}
         </>
     )
 };
