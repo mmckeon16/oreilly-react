@@ -7,7 +7,7 @@ const Photo = (props) => (
         <figcaption> <p> {props.post.description} </p></figcaption>
         <div className="button-container">
             <button className="remove-button" onClick={() => {
-                props.onRemovePhoto(props.post)
+                props.removePost(props.index)
             }}>Remove</button>
         </div>
     </figure>

@@ -6,7 +6,6 @@ const PhotoWall =(props) => (
     <div>
         <Link className ="addIcon" to = "/add-photo"></Link>
         <div className="photo-grid">
-            {console.log(props.posts)}
             {props.posts
                 .sort(function(x,y) {
                     return y.id-x.id
@@ -14,7 +13,8 @@ const PhotoWall =(props) => (
                 .map((post,index) => <Photo 
                     key={index} 
                     post={post} 
-                    onRemovePhoto = {props.onRemovePhoto}
+                    {...props}
+                    index={index}
                 />
             )}
         </div>
