@@ -6,6 +6,11 @@ import Single from "./Single";
 
 const Main = (props) => {
 
+    useEffect(()=> {
+        props.startLoadingPosts();
+        props.startLoadingComments();
+    })
+
     return (
         <>
             <h1>

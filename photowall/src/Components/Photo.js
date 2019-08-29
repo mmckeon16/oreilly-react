@@ -2,7 +2,6 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 
 const Photo = (props) => (
-    //const post = this.props.post
     <figure className="figure">
         <Link to={`single/${props.post.id}`} >
             <img className="photo" src={props.post.imageLink} alt={props.post.description}/>
@@ -11,7 +10,7 @@ const Photo = (props) => (
         <div className="button-container">
             <button className="remove-button" 
                 onClick={() => {
-                    props.removePost(props.index)
+                    props.startRemovePost(props.index, props.post.id);
                     props.history.push('/');
                 }}>
                 Remove

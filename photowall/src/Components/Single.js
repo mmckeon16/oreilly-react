@@ -13,7 +13,7 @@ const Single = (props) => {
        
         <div className ="single-photo">
             <Photo post ={post} {...props} index={index}/>
-            <Comments addComment={props.addComment} comments = {comments} id={id}/>
+            <Comments startAddingComment={props.startAddingComment} comments={comments} id={id}/>
         </div>
     )
 }
