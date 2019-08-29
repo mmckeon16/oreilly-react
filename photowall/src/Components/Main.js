@@ -1,39 +1,45 @@
-import React, {useEffect} from 'react';
+import React, { useState, useEffect } from "react";
 import PhotoWall from "./PhotoWall";
 import AddPhoto from "./AddPhoto";
-import {Route, Link} from "react-router-dom";
+import { Route, Link } from "react-router-dom";
 import Single from "./Single";
 
-const Main = (props) => {
+const Main = props => {
+  useEffect(() => {
+    props.startLoadingPosts().then(() => {
+      changeLoading(false);
+    });
+    props.startLoadingComments();
+  });
 
-    useEffect(()=> {
-        props.startLoadingPosts();
-        props.startLoadingComments();
-    })
+  const [loading, changeLoading] = useState(true);
 
-    return (
-        <>
-            <h1>
-                <Link to="/"> PhotoWall</Link>
-            </h1>
-            <Route exact path = "/" render ={() => (
-                <div>
-                    <PhotoWall 
-                        {...props} 
-                    />
-                </div>
-            )} /> 
+  return (
+    <>
+      <h1>
+        <Link to="/"> PhotoWall</Link>
+      </h1>
+      <Route
+        exact
+        path="/"
+        render={() => (
+          <div>
+            <PhotoWall {...props} />
+          </div>
+        )}
+      />
 
-            <Route path = "/add-photo" render = {({history}) => (
-                <AddPhoto {...props} onHistory={history}/>
-            )}/>
+      <Route
+        path="/add-photo"
+        render={({ history }) => <AddPhoto {...props} onHistory={history} />}
+      />
 
-            <Route path="/single/:id" render= {(params) => (
-                <Single {...props} {...params}/>
-            )}/>
-        </>
-    )
+      <Route
+        path="/single/:id"
+        render={params => <Single loading={loading} {...props} {...params} />}
+      />
+    </>
+  );
 };
-
 
 export default Main;
